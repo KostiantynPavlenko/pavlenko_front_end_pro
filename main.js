@@ -1,5 +1,5 @@
 function guessNumber() {
-  const attempts = 3;
+  const attempts = 10;
 
   for (let i = 1; i <= attempts; i++) {
     const enteredValue = +prompt('Enter number greater than 100');
