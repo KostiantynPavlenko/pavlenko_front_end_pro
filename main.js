@@ -19,7 +19,13 @@ const contactBook = {
     }
   },
   searchContact(name) {
-    return this.contacts.filter((contact) => contact.name.toLowerCase() === name.toLowerCase());
+    const filteredContacts = this.contacts.filter((contact) => contact.name.toLowerCase() === name.toLowerCase());
+
+    if (filteredContacts.length > 0) {
+      return filteredContacts;
+    }
+
+    return 'Contact not found';
   }
 }
 
