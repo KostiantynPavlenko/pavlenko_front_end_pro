@@ -1,7 +1,7 @@
 const person = {
-  name: "Kostya",
+  name: 'Kostya',
   age: 23,
-  city: "Odesa",
+  city: 'Odesa',
   showInfo(){
     Object.entries(this).forEach(([key, value]) => {
       if (typeof value !== 'function'){
