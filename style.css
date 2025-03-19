@@ -1,0 +1,32 @@
+.table {
+  border-collapse: collapse;
+}
+.greenCell {
+  background-color: #59a541;
+  font-weight: bold;
+}
+.lowGreenCell {
+  background-color: #c3eeb7;
+}
+.brownCell {
+  background-color: #df8b58;
+  font-weight: bold;
+}
+.lowBrownCell {
+  background-color: #f4e1d0;
+}
+.yellowCell {
+  background-color: #efc44b;
+  font-weight: bold;
+}
+.grayCell {
+  background-color: #9d9d9c;
+}
+.tableCell {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  text-align: center;
+  border: 2px solid #494949;
+  user-select: none;
+}
