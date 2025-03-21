@@ -1,0 +1,15 @@
+.header-text {
+  text-align: center;
+  color: brown;
+}
+
+.button-wrapper {
+  text-align: center;
+}
+.color-switcher-button {
+  padding: 8px 12px;
+}
+
+.yellow-text {
+  color: goldenrod;
+}
