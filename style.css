@@ -1,0 +1,13 @@
+.buttons {
+  display: flex;
+  justify-content: space-between;
+
+  max-width: 400px;
+  
+  margin: 0 auto;
+}
+.button {
+  background-color: aquamarine;
+  padding: 8px 12px;
+  user-select: none;
+}
