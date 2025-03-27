@@ -1,0 +1,13 @@
+.buttons-wrapper{
+  max-width: 600px;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+
+.button {
+  padding: 8px 12px;
+  background-color: brown;
+  color: azure;
+  font-weight: bold;
+}
