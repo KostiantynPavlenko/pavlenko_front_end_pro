@@ -1,38 +1,35 @@
 const appContainer = document.querySelector('.app');
+
 const taskContainerElement = document.createElement('div');
+const tasksList = document.createElement('ul');
+const taskInput = document.createElement('input');
+const addTaskButton = document.createElement('button');
 
 taskContainerElement.classList.add('tasks-section');
+tasksList.classList.add('tasks-list');
+taskInput.classList.add('task-input');
+addTaskButton.classList.add('add-task-button');
+addTaskButton.textContent = 'Add task';
+
 appContainer.appendChild(taskContainerElement);
+taskContainerElement.appendChild(tasksList);
+taskContainerElement.appendChild(taskInput);
+taskContainerElement.appendChild(addTaskButton);
 
+const tasks = ['Make a dinner', 'Clear room', 'Some task'];
 
-const tasks = ['Make a dinner', 'Clear room'];
+function createTask(taskText) {
+  const tasksItem = document.createElement('li');
 
-function renderTasksSection(tasks) {
-  const tasksListTag = document.createElement('ul');
-  const taskInputTag = document.createElement('input');
-  const addTaskButton = document.createElement('button');
-
-  tasksListTag.classList.add('tasks-list');
-  taskInputTag.classList.add('task-input');
-  addTaskButton.classList.add('add-task-button');
-  addTaskButton.textContent = 'Add task';
-
-  tasks.forEach(taskText => {
-    const tasksItemTag = document.createElement('li');
-
-    tasksItemTag.innerHTML = `${taskText} <button class="remove-task-button">remove</button>`;
-    tasksListTag.appendChild(tasksItemTag);
-  })
-
-  taskContainerElement.appendChild(tasksListTag);
-  taskContainerElement.appendChild(taskInputTag);
-  taskContainerElement.appendChild(addTaskButton);
+  tasksItem.innerHTML = `${taskText} <button class="remove-task-button">remove</button>`;
+  tasksList.appendChild(tasksItem);
 }
 
-renderTasksSection(tasks);
+function renderTasks(tasks) {
+  tasks.forEach(task => createTask(task));
+}
 
-const tasksList = document.querySelector('.tasks-list');
-const addTaskButton = document.querySelector('.add-task-button');
+renderTasks(tasks);
 
 tasksList.addEventListener('click', (e) => {
   if (e.target.classList.contains('remove-task-button')) {
@@ -40,7 +37,14 @@ tasksList.addEventListener('click', (e) => {
   }
 });
 
-addTaskButton.addEventListener();
+addTaskButton.addEventListener('click', () => {
+  const inputValue = taskInput.value.trim();
+
+  if (inputValue) {
+    createTask(inputValue);
+    taskInput.value = '';
+  }
+});
 
 
 
