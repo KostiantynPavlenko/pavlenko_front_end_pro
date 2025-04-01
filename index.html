@@ -7,6 +7,25 @@
     <title>Front-end Pro</title>
 </head>
 <body>
+  <form action="POST" class="help-form">
+    <div class="input-wrapper">
+      <input id="name" name="name" type="text" placeholder="Name">
+      <p class="error-message" id="error-name"></p>
+    </div>
+    <div class="input-wrapper">
+      <textarea id="message" name="message" type="text" placeholder="Message"></textarea>
+      <p class="error-message" id="error-message"></p>
+    </div>
+    <div class="input-wrapper">
+      <input id="phone" name="phone" type="text" placeholder="Phone number">
+      <p class="error-message" id="error-phone"></p>
+    </div>
+    <div class="input-wrapper">
+      <input id="email" name="email" type="text" placeholder="Email">
+      <p class="error-message" id="error-email"></p>
+    </div>
+    <button type="submit">Send message</button>
+  </form>
   <script src="main.js"></script>
 </body>
 </html>

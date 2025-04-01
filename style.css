@@ -1,0 +1,14 @@
+.help-form {
+  max-width: 300px;
+  margin:  0 auto;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-wrapper > .error-message {
+  color: rgb(155, 33, 33);
+  margin: 10px 0;
+}
