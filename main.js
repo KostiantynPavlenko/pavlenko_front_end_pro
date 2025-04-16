@@ -2,7 +2,7 @@ const timer = document.querySelector('.timer');
 
 let timerSeconds = 120;
 
-function secondsToMinutes(seconds) {
+function formatTime(seconds) {
   let min = Math.floor(seconds / 60);
   let sec = seconds % 60;
   
@@ -18,7 +18,7 @@ function secondsToMinutes(seconds) {
 }
 
 function renderTimer(seconds) {
-  const time = secondsToMinutes(seconds);
+  const time = formatTime(seconds);
   timer.textContent = time;
 }
 
