@@ -55,8 +55,11 @@ function renderWeatherError() {
 
 function getWeather() {
   return fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
-  .then((result) => {
-    return result.json();
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error('Weather fetch failed');
+    }
+    return response.json();
   })
 }
 
