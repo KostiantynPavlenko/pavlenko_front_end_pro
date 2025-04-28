@@ -38,11 +38,7 @@ function createCommentElement(commentData) {
 
 function renderPost(post, isNew = false) {
   const postElement = createPostElement(post);
-  if(isNew) {
-    postsList.prepend(postElement);
-  } else {
-    postsList.appendChild(postElement);
-  }
+  isNew ? postsList.prepend(postElement) : postsList.appendChild(postElement);
 }
 
 function createSuccessfulMessage(message) {
@@ -98,6 +94,8 @@ function addNewPost(title, body) {
       throw new Error(`Failed to add new post: ${response.statusText}`)
     }
     return response.json();
+  }).catch(err => {
+    console.error(err);
   });
 }
 
@@ -115,6 +113,9 @@ postsList.addEventListener('click', (e) => {
           const commentElement = createCommentElement(comment);
           commentWrapper.appendChild(commentElement);
         });
+      })
+      .catch(err => {
+        console.error(err);
       });
   }
 });
@@ -128,9 +129,8 @@ postForm.addEventListener('submit', (e) => {
   if(titleInputValue || textareaValue) {
     addNewPost(titleInputValue, textareaValue)
     .then(data => {
-      const successfulMessage = createSuccessfulMessage('Post successfully created');
       renderPost(data, true);
-      showMessage(successfulMessage);
+      showMessage(createSuccessfulMessage('Post successfully created'));
     })
     .catch(err => {
       console.error(err);
@@ -146,4 +146,6 @@ getPosts().then(posts => {
   posts.forEach(post => {
     renderPost(post);
   })
+}).catch(err => {
+  console.error(err);
 });
