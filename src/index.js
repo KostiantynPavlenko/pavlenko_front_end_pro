@@ -1,6 +1,7 @@
 'use strict';
-import { getPosts, getComments, addNewPost } from "./api.js"; 
-import { createPostElement, createCommentElement, createSuccessfulMessage } from "./ui.js";
+import './scss/styles.scss';
+import { getPosts, getComments, addNewPost } from "./js/api.js"; 
+import { createPostElement, createCommentElement, createSuccessfulMessage } from "./js/ui.js";
 
 const mainContainer = document.querySelector('.container');
 const postForm = document.querySelector('#post-form');

@@ -1,0 +1,49 @@
+/*!***************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/scss/styles.scss ***!
+  \***************************************************************************************************************/
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#post-title-input {
+  display: block;
+  width: 250px;
+  margin-bottom: 10px;
+}
+
+#post-textarea {
+  display: block;
+  width: 250px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+#create-post-button {
+  display: block;
+  padding: 6px 10px;
+}
+
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+}
+
+.comment-container {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.successful-message {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  padding: 8px 12px;
+  background-color: rgb(80, 185, 80);
+  border: 1px solid rgb(45, 148, 67);
+  border-radius: 4px;
+}

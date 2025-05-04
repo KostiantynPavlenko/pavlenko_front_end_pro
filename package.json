@@ -1,0 +1,33 @@
+{
+  "name": "posts_homework",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/KostiantynPavlenko/pavlenko_front_end_pro#readme",
+  "bugs": {
+    "url": "https://github.com/KostiantynPavlenko/pavlenko_front_end_pro/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KostiantynPavlenko/pavlenko_front_end_pro.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve --open --mode development"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.1",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "mini-css-extract-plugin": "^2.9.2",
+    "sass": "^1.87.0",
+    "sass-loader": "^16.0.5",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.99.7",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1"
+  }
+}
