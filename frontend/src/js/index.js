@@ -1,3 +1,7 @@
+'use strict';
+import { getTodos, addNewTodo, toggleTodo, deleteTodo } from "./api.js";
+import { createTask } from "./ui.js";
+
 const appContainer = document.querySelector('.app');
 
 const taskContainerElement = document.createElement('div');
@@ -19,87 +23,64 @@ addTaskContainer.appendChild(taskInput);
 addTaskContainer.appendChild(addTaskButton);
 taskContainerElement.appendChild(tasksList);
 
-let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-
-function createTask(task) {
-  const tasksItem = document.createElement('li');
-  const taskCheckboxElement = document.createElement('div');
-  const taskTextElement = document.createElement('span');
-  const taskRemoveButton = document.createElement('button');
-
-  taskCheckboxElement.classList.add('task-checkbox');
-  taskCheckboxElement.setAttribute('data-id', task.id);
-
-  taskTextElement.classList.add('task-text');
-  taskTextElement.textContent = task.value;
-
-  taskRemoveButton.classList.add('remove-task-button');
-  taskRemoveButton.setAttribute('data-id', task.id);
-  taskRemoveButton.textContent = 'remove';
-
-  if (task.status) {    
-    taskCheckboxElement.classList.add('checked');
-    taskTextElement.classList.add('checked');
-  }
-
-  tasksItem.appendChild(taskCheckboxElement);
-  tasksItem.appendChild(taskTextElement);
-  tasksItem.appendChild(taskRemoveButton);
-  
-  tasksList.appendChild(tasksItem);
+function renderTaks(task) {
+  tasksList.appendChild(task)
 }
 
-function renderTasks(tasks) {
-  tasks.forEach(task => createTask(task));
+async function init() {
+  const todos = await getTodos();
+
+  todos.forEach(task => {
+    renderTaks(createTask(task));
+  });
 }
 
-tasksList.addEventListener('click', (e) => {
+tasksList.addEventListener('click', async (e) => {
   if (e.target.classList.contains('remove-task-button')) {
     const taskId = +e.target.dataset.id;
 
-    tasks = tasks.filter(task => task.id !== taskId);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-    
-    e.target.closest('li').remove();
+    try {
+      await deleteTodo(taskId);
+
+      e.target.closest('li').remove();
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   if (e.target.classList.contains('task-checkbox')) {
     const taskId = +e.target.dataset.id;
     const li = e.target.closest('li');
     const taskTextElement = li.querySelector('.task-text');
-    
-    e.target.classList.toggle('checked');
-    taskTextElement.classList.toggle('checked');
-    
-    tasks.forEach(task => {
-      if (task.id === taskId) {
-        task.status = e.target.classList.contains('checked');
-      }
-    });
 
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    try {
+      await toggleTodo(taskId);
+      
+      e.target.classList.toggle('checked');
+      taskTextElement.classList.toggle('checked');
+    } catch (error) {
+      console.error(error);
+    }    
   }
 });
 
-addTaskButton.addEventListener('click', () => {
+addTaskButton.addEventListener('click', async () => {
   const inputValue = taskInput.value.trim();
 
   if (inputValue) {
-    const taskId = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER) + 1;
-    const task = {
-      id: taskId,
-      value: inputValue,
-      status: false,
-    }
-    
-    tasks.push(task)
-    createTask(task);
-    taskInput.value = '';
+    try {
+      const todoData = await addNewTodo(inputValue, false);
 
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+      renderTaks(createTask(todoData));
+    } catch (error) {
+      console.error(error);
+    }
+
+    taskInput.value = '';
   }
 });
 
-renderTasks(tasks);
+// Main
 
+init();
 
