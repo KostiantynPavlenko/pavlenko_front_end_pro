@@ -2,26 +2,9 @@
 import { getTodos, addNewTodo, toggleTodo, deleteTodo } from "./api.js";
 import { createTask } from "./ui.js";
 
-const appContainer = document.querySelector('.app');
-
-const taskContainerElement = document.createElement('div');
-const tasksList = document.createElement('ul');
-const addTaskContainer = document.createElement('div');
-const taskInput = document.createElement('input');
-const addTaskButton = document.createElement('button');
-
-taskContainerElement.classList.add('tasks-section');
-tasksList.classList.add('tasks-list');
-addTaskContainer.classList.add('task-add-wrapper');
-taskInput.classList.add('task-input');
-addTaskButton.classList.add('add-task-button');
-addTaskButton.textContent = 'Add task';
-
-appContainer.appendChild(taskContainerElement);
-taskContainerElement.appendChild(addTaskContainer);
-addTaskContainer.appendChild(taskInput);
-addTaskContainer.appendChild(addTaskButton);
-taskContainerElement.appendChild(tasksList);
+const tasksList = document.querySelector('ul');
+const taskInput = document.querySelector('.task-input');
+const addTaskButton = document.querySelector('.add-task-button');
 
 function renderTaks(task) {
   tasksList.appendChild(task)
